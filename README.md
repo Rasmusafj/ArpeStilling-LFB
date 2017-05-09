@@ -6,11 +6,11 @@ The JavaScript scripts using D3 for visualizing crime data are found in the `js/
 
 The IPython notebook for the initial data analysis and dataset preparation
 and preprocessing is found in the `explainer_notebook/` directory.
-We have chosen not to include the raw datasets in this repository since they
-are contained in large files. Links to the datasets can be found in the
-explainer notebook.
+The dataset files used in the analysis are found in the `raw-datasets/`
+directory.
 
-The `data/` directory contains the extracted datasets used for the D3 visualizations.
+The `data/` directory contains the extracted datasets used for the D3
+visualizations on the website.
 
 `css/`, `d3/` and `vendor/` contains various files used for styling etc. of the
 website.
