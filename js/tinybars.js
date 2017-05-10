@@ -3,7 +3,7 @@
 }());
 
 // define global variables
-var tbMargin = {top: 30, right: 0, bottom: 100, left: 10};
+var tbMargin = {top: 10, right: 0, bottom: 20, left: 25};
 var tbWidth = 200 - tbMargin.left - tbMargin.right;
 var tbHeight = 600 - tbMargin.top - tbMargin.bottom;
 var tbXScale0;
@@ -47,7 +47,7 @@ function initTinyBars() {
 			.domain(dataset.map(function(d) { return d.Borough; }));
 		tbXScale1 = d3.scale.ordinal()
 			.domain(keys).rangeRoundBands([0, tbXScale0.rangeBand()]);
-		
+
 		// define bar colors
 		var colors = d3.scale.ordinal()
 			.range(["#5495ff", "#ff5492", "#ffa354", "#65ff54"]);
@@ -65,16 +65,17 @@ function initTinyBars() {
 		// append the axes to the plot
 		tinyBars.append("g")
 			.attr('class', 'x axis')
-			.attr('transform', 'translate(0,' + tbHeight + ')')
+			.attr('transform', 'translate('+[tbMargin.left, tbHeight] + ')')
 			.call(xAxis)
 
 		tinyBars.append("g")
 			.attr("class", "y axis")
+			.attr("transform", "translate("+[tbMargin.left, 0]+")")
 			.call(yAxis)
 			.append("text")
 			.attr('transform', 'rotate(-90)')
-			.attr('y', 6)
-			.attr('dy', '10mm')
+			.attr('y', 7)
+			.attr('dy', '1mm')
 			.style('text-anchor', 'end')
 			.text('Fraction of incidents');
 
@@ -84,9 +85,10 @@ function initTinyBars() {
 			.enter()
 			.append("g")
 			.attr("class", "borough")
-			.attr("transform", function(d) { 
-				return "translate(" + tbXScale0(d.Borough) + ",0)";
-			});
+			.attr("transform", "translate("+[tbMargin.left+5, 0]+")")
+//			.attr("transform", function(d) {
+//				return "translate(" + tbXScale0(d.Borough) + ",0)";
+//			});
 
 		// add the bars for the group
 		var bars = borough.selectAll("rect")

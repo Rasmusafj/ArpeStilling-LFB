@@ -2,7 +2,7 @@
 	"use strict";
 }());
 
-var	margin_lol = {top: 10, right: 10, bottom: 10, left: 10};
+var	margin_lol = {top: 10, right: 10, bottom: 10, left: 25};
 var width_lol = 500 - margin_lol.left - margin_lol.right;
 var height_lol = 400 - margin_lol.top - margin_lol.bottom;
 
@@ -17,8 +17,10 @@ var	yTScale = d3.scale.linear().range([height_lol, 0]);
 var	xAxis = d3.svg.axis().scale(xTScale)
 	.orient("bottom").ticks(5);
 
-var	yAxis = d3.svg.axis().scale(yTScale)
-	.orient("right").ticks(5);
+var	yAxis = d3.svg.axis()
+	.scale(yTScale)
+	.orient("left")
+	.ticks(5);
 
 var	vLine = d3.svg.line()
 	.x(function(d) { return xTScale(d.Date); })
@@ -35,18 +37,20 @@ var	vLine = d3.svg.line()
 
 		PLOT.append("path")
 			.attr("class", "line")
+			.attr("transform", "translate("+[margin_lol.left,0]+")")
 			.attr("stroke", "magenta")
 			.attr("d", vLine(dataset));
 
 		// Add the X Axis
 		PLOT.append("g")
 			.attr("class", "x axis")
-			.attr("transform", "translate(0," + height_lol + ")")
+			.attr("transform", "translate("+[margin_lol.left, height_lol]+")")
 			.call(xAxis);
 
 		// Add the Y Axis
 		PLOT.append("g")
 			.attr("class", "y axis")
+			.attr("transform", "translate("+[margin_lol.left,0]+")")
 			.call(yAxis);
 
 
@@ -56,7 +60,7 @@ var	vLine = d3.svg.line()
 			.append('g')
 			.attr('class', 'legend')
 			.attr('fill', 'black')
-			.attr('transform', function() { return 'translate(' + width_lol + ',' + 0 + ')'; });
+			.attr('transform', function() { return 'translate('+[width_lol-60, 0]+')'; });
 		legend.append('rect')
 			.attr('width', 20)
 			.attr('height', 20)
@@ -78,6 +82,7 @@ var	vLine = d3.svg.line()
 
 		PLOT.append("path")
 			.attr("class", "line")
+			.attr("transform", "translate("+[margin_lol.left,0]+")")
 			.attr("stroke", "teal")
 			.attr("d", vLine(dataset));
 	

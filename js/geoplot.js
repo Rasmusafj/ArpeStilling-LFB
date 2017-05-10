@@ -3,7 +3,7 @@
 }());
 
 // global variables
-var geoWidth = 700;
+var geoWidth = 550;
 var geoHeight = 700;
 var scale = 90000;
 var projection;

@@ -1,3 +1,6 @@
+// Credits go to: https://bl.ocks.org/ajschumacher/65eda1df2b0dd2cf616f
+// Changes go to: Us
+
 var margin = {top: 20, right: 120, bottom: 20, left: 180},
     width = 960 - margin.right - margin.left,
     height = 480 - margin.top - margin.bottom;

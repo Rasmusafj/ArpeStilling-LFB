@@ -50,10 +50,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#section1">Exploring Data</a>
+                        <a href="#intro">Introduction</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#section2">Visualizations</a>
+                        <a href="#section1">Exploring the data</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#section3">Clustering</a>
@@ -99,45 +99,37 @@
     </div>
 </header>
 
-<!-- 2A section-->
-<section id="section1">
+<section id="intro"> 
     <div class="container visualizations">
-        <div class="row">
+        <div class="row text-left">
             <div class="col-lg-12 text-center">
-                <h2> Exploring the Data</h2>
+                <h2>Introduction</h2>
                 <hr class="line-primary">
             </div>
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6">
+        <div class="col-lg-2 "></div>
+            <div class="col-lg-8 ">
                 <p>
-					While exploring our datasets, we found this interesting
-					correlation between the average temperature of each
-					month and the number of incidents for the corresponding
-					month. Note that scaling have been applied to the data
-					in order to bring the values into the interval of [0;1].
-					If this wasn't done, the temperature values would have
-					been extremely low and the correlation would have been
-					impossible to see.
+               We have chosen to perform a data analysis regarding the London Fire Brigade (LFB). The LFB is one of the largest fire fighting and rescue service in the world. They record data about all incidents, which we have utilized. Furthermore, we have combined their data with other available data such as temperatures and dwelling statistics. All of our data can be found in our github repository: <a href="https://github.com/klstilling/ArpeStilling-LFB/"> Link to repository</a> 
                 </p>
                 <p>
+                We aim to show some of our interesting findings by visualizing it here on our webpage using the d3 library. 
                 </p>
-            </div>
+            </div>  
         </div>
-        <div class="text-center" id="temp_plot"></div>
     </div>
-
 
 </section>
 
-<section id="section2">
-    <div class="container visualizations">
-        <div class="row">
+<!-- 2A section-->
+<section id="section1">
+  <div class="container visualizations">
+        <div class="row text-left">
             <div class="col-lg-12 text-center">
-                <h2>Incident Distribution</h2>
+                <h2>Exploring the data</h2>
                 <hr class="line-primary">
             </div>
-            <div class="col-lg-3"></div>
-            <div class="col-lg-6">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
                 <p>
 					In the figure below you will find a map of Inner London.
 					To the right of the map is a bar plot which shows the
@@ -150,28 +142,60 @@
 					'fire'. 'Total' is the total number of incidents in the
 					period per resident.
                 </p>
-                <p>
-					When looking at the Westminster borough we see that it has
-					the most incidents per resident in the area, with a little
-					over half of the incidents being false alarms.
-					The neighboring borough of City of London have less reported
-					fire incidents per resident, but a much larger fraction of
-					their reported incidents are false alarms.
-				</p>
-				<p>
-					False alarms incidents account for most of the reported
-					incidents in all boroughs, which means that the LFB
-					spends most of their time attending false alarms. It
-					would be very beneficial if there was some way that we
-					could reduce this number.
-                </p>
             </div>
         </div>
 			<div class="row">
-				<div class="col-sm-9" id="geoplot"></div>
+				<div class="col-sm-6" id="geoplot"></div>
 				<div class="col-sm-3" id="tinybar"></div>
 			</div>
+        <p>
+        <div class="row text-left">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+            <h3> Discussion of Incident distrubutions</h3>
+            <p>
+                    When looking at the Westminster borough we see that it has
+                    the most incidents per resident in the area, with a little
+                    over half of the incidents being false alarms.
+                    The neighboring borough of City of London have less reported
+                    fire incidents per resident, but a much larger fraction of
+                    their reported incidents are false alarms. Feel free to further explore to see other differences between the boroughs.
+                </p>
+                <p>
+                    False alarms incidents account for most of the reported
+                    incidents in all boroughs, which means that the LFB
+                    spends most of their time attending false alarms. It
+                    would be very beneficial if there was some way that we
+                    could reduce this number.
+                </p>
+            </div>
+        </div>
  </div>
+    <div class="container visualizations">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 text-left">
+                <h3> Other findings </h3>
+                <p>
+                    In our analysis we did a lot of exploring in order to find interesting correlations. 
+                    We did not find anything that would be new and helpful to the LFB but we did find
+					this interesting
+					correlation between the average temperature of each
+					month and the number of incidents for the corresponding
+					month. Note that scaling have been applied to the data
+					in order to bring the values into the interval of [0;1].
+					If this wasn't done, the temperature values would have
+					been extremely low and the correlation would have been
+					impossible to see.
+                    This is probabily an example of a spurious correlation. It is visualized in d3 but is not interactive. 
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+        <div class="text-center" id="temp_plot"></div>
+    </div>
+ 
 </section>
 
 <section id="section3">
@@ -190,13 +214,13 @@
                 Luckily, we have taken the course 02806 - Social Data analysis and visualization at DTU, so we can easily help them. 
                 </p>
                 <p>
-                Since the London Fire Brigade has 57 different fire stations in inner London, we will illustrate our method on a subset of authorities: "Kensington and Chelsea", "Westminster", "Camden", and "Islington". The method is easily extended to include all of London if desired. 
+                Since the London Fire Brigade has 57 different fire stations in inner London, we will illustrate our method on a subset of authorities: "Kensington and Chelsea", "Westminster", "Camden", and "Islington" (see above map). The method is easily extended to include all of London if desired. 
                 </p>
                 <p>
-                We propose to create clusters using K-means. The centroids of the K-means algorithm will correspond to the suggested new places of fire stations. The visualization in D3 also lets the viewer see how the fire stations are currently placed. If the London Fire Brigade decides that they want to completely remove x number of stations and relocate the rest, we have trained multiple K-means models using different values of K. 
+                We propose to create clusters using K-means. The centroids of the K-means algorithm will correspond to the suggested new places of fire stations. The visualization in D3 also lets the viewer see how the fire stations are currently placed. If the London Fire Brigade decides that they want to completely remove x number of stations and relocate the rest, we can then train other K-means models using different values of K. 
                 </p>
                 <p>
-                    We created the visualization such that you can preview the result when hovering over the buttons. 
+                We created the visualization such that you can preview the result when hovering over the buttons. 
                 </p>
             </div>  
     </div>
@@ -231,7 +255,7 @@
                 As you probably already know, there are three different types of incidents; Fire, False Alarm, Special Incidents. Imagine that the London Fire Brigade loses these labels for their data i.e. their dataset has become corrupt. How will they know which incident belonged to what type? 
                 </p>
                 <p>
-                Therefore, we decided to create a decision tree that will clasify the incident type. The accuracy of the tree (on test data not used for training) is 46%, which is not that good but still a lot better than random guessing. We performed under-sampling prior to training the classifier. 
+                Therefore, we decided to create a decision tree that will clasify the incident type. The accuracy of the tree (on test data not used for training) is 60%, which is quite good if compared to random guessing. We performed under-sampling prior to training the classifier, since their is a majority of false alarms.
                 </p>
                 <p>
                 The visualization is interactive such that the user is able to collapse the nodes in order to get a better overview. 
@@ -261,10 +285,10 @@
             <div class="col-lg-2 "></div>
             <div class="col-lg-8 ">
                 <p>
-                The London Fire Brigade wishes to create an estimate for when the firepump will arrive after they receive a phone call or ping from an alarm. We assume that the estimated time before arrival (ETA) is very dependant on the distance from nearest fire station, but other factors such as time of day, month, temperature and so on might also have a big effect on the time taken to arrive. 
+                The London Fire Brigade wishes to create an estimate for when the firepump will arrive after they receive a phone call or ping from an alarm. We assume that the estimated time before arrival (ETA) is very dependant on the distance from nearest fire station, but other factors such as temperature might also have a big effect on the time taken to arrive. 
                 </p>
                 <p>
-                We created a multiple regression model that is able to calculate the ETA based on multiple factors (features). Furthermore, we made a d3 visualization such that you basically click on the map where the incident is happening, and then the model will instantly give you the ETA time. Furthermore, you are able to tamper with other conditions such as time, temperature and so on. 
+                We created a multiple regression model that is able to calculate the ETA based on multiple factors (features). Furthermore, we made a d3 visualization such that you basically click on the map where the incident is happening, and then the model will instantly give you the ETA time. Furthermore, you are able to tamper with the temperature. 
                 </p>
             </div>
             <div class="col-lg-8">

@@ -3,8 +3,8 @@
 }());
 
 // define global variables, some of these are used by the tinybars script
-var bpMargin = {top: 10, right: 80, bottom: 120, left: -50};
-var bpWidth = 600 - bpMargin.left - bpMargin.right;
+var bpMargin = {top: 10, right: 0, bottom: 20, left: 20};
+var bpWidth = 200 - bpMargin.left - bpMargin.right;
 var bpHeight = 600 - bpMargin.top - bpMargin.bottom;
 var yScale;
 var yAxis;
@@ -55,7 +55,7 @@ d3.csv('data/incidents-all-boroughs.csv', function(dataset) {
 
 	yAxis = d3.svg.axis()
 		.scale(yScale)
-		.orient('right')
+		.orient('left')
 		.tickFormat(d3.format(".2"));
 
 	// append the axes to the plot
